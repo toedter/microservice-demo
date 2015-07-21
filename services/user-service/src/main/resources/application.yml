@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+eureka:
+  client:
+    registerWithEureka: true
+    instance:
+      metadataMap:
+        instanceId=${spring.application.name}:${random.value}
+
+spring:
+  application:
+    name=user-service
+

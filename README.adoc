@@ -1,6 +1,6 @@
 = Microservice Demo
 
-This is curenntly under heavy development.
+This is currently under heavy development.
 
 == Used Technologies
 
