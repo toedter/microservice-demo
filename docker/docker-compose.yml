@@ -1,0 +1,15 @@
+userservice:
+  build: ./user-service
+  ports:
+    - "8081:8081"
+  volumes:
+    - /services:/services
+  links:
+    - discoveryservice
+discoveryservice:
+  build: ./discovery-service
+  ports:
+    - "8761:8761"
+  volumes:
+    - /services:/services
+
