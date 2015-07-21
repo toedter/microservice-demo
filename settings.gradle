@@ -1,3 +1,4 @@
 include 'services/user-service'
+include 'services/discovery-service'
 
 rootProject.name = 'microservice-demo'
