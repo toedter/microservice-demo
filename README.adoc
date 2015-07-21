@@ -1,0 +1,10 @@
+= Microservice Demo
+
+This is curenntly under heavy development.
+
+== Used Technologies
+
+* Java 8
+* http://stateless.co/hal_specification.html[HAL] (Hypertext Application Language)
+* http://projects.spring.io/spring-boot/[Spring Boot] (+ Data, REST, HATEOAS)
+* http://www.gradle.org/[Gradle] as build system
