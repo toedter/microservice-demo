@@ -10,7 +10,8 @@ eureka:
     serviceUrl:
       defaultZone: http://discoveryservice:8761/eureka/
     registerWithEureka: true
-    instance:
-      metadataMap:
-        instanceId: ${spring.application.name}:${random.value}
+  instance:
+    preferIpAddress: true
+    metadataMap:
+      instanceId: ${spring.application.name}:${random.value}
 
