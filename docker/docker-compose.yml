@@ -1,3 +1,10 @@
+discoveryservice:
+  build: ./discovery-service
+  ports:
+    - "8761:8761"
+  volumes:
+    - /services:/services
+
 userservice:
   build: ./user-service
   ports:
@@ -6,10 +13,13 @@ userservice:
     - /services:/services
   links:
     - discoveryservice
-discoveryservice:
-  build: ./discovery-service
+
+zuulservice:
+  build: ./zuul-service
   ports:
-    - "8761:8761"
+    - "8080:8080"
   volumes:
     - /services:/services
+  links:
+    - discoveryservice
 

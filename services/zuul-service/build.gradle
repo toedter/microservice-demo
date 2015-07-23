@@ -1,0 +1,12 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'zuul-service'
+	version =  '1.0.0'
+}
+
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-zuul'
+}

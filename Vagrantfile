@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/trusty64"
   config.vm.synced_folder "./services", "/services", create: true
+  config.vm.network "forwarded_port", guest: 8080, host: 18080
   config.vm.network "forwarded_port", guest: 8081, host: 18081
   config.vm.network "forwarded_port", guest: 8761, host: 18761
 
