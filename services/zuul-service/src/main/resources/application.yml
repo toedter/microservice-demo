@@ -1,9 +1,9 @@
-server:
-  port: 8080
-
 spring:
   application:
     name: zuul
+
+server:
+  port: 8080
 
 eureka:
   client:

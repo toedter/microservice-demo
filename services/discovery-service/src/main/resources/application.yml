@@ -1,17 +1,15 @@
-server:
-  port: ${PORT:8761}
-
 spring:
   application:
     name: eureka
+
+server:
+  port: ${PORT:8761}
 
 eureka:
   server:
       waitTimeInMsWhenSyncEmpty: 0
       enableSelfPreservation: true
   client:
-    serviceUrl:
-      defaultZone: http://discoveryservice:8761/eureka/
     registerWithEureka: true
   instance:
     preferIpAddress: true
