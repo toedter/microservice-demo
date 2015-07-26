@@ -18,6 +18,23 @@
 </div>
 <div class="container">
     <h4>Users</h4>
+
+    <form class="form-inline"
+          th:action="users.html"
+          th:object="${user}"
+          th:method="post"
+          role="form">
+        <div class="form-group">
+            <input style="width:20%" type="text" class="form-control"
+                   placeholder="Enter ID" th:field="*{id}"/>
+            <input style="width:20%" type="text" class="form-control"
+                   placeholder="Enter email" th:field="*{fullName}"/>
+            <input style="width:20%" type="text" class="form-control"
+                   placeholder="Enter full name" th:field="*{email}"/>
+            <button style="width:20%" type="submit" class="btn btn-success">Create User</button>
+        </div>
+    </form>
+    <br/>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
