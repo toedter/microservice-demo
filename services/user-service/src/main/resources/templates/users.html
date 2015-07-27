@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Users</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="webapp.css"/>
     <link rel="stylesheet" href="slate.css"/>
 </head>
@@ -17,8 +18,6 @@
     </div>
 </div>
 <div class="container">
-    <h4>Users</h4>
-
     <form class="form-inline"
           th:action="users.html"
           th:object="${user}"
@@ -35,12 +34,14 @@
         </div>
     </form>
     <br/>
+    <h4>Users</h4>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
             <td>id</td>
             <td>Name</td>
             <td>Email</td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
@@ -48,11 +49,18 @@
             <td colspan="4">No users</td>
         </tr>
         <tr th:each="user : ${users}">
-            <td>
-                <a href="1.html" th:href="${user.id+'.html'}"
-                   th:text="${user.id}">1</a></td>
+            <td th:text="${user.id}">Id</td>
             <td th:text="${user.fullName}">Name</td>
             <td th:text="${user.email}">Email</td>
+            <td>
+                <form class="form-inline"
+                      th:action="'users/' + ${user.id} + '.html'"
+                      th:method="delete">
+                    <button type="submit" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

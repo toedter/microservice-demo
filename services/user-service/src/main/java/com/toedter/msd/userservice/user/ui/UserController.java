@@ -5,6 +5,7 @@ import com.toedter.msd.userservice.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,8 +26,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users.html", method = RequestMethod.POST)
-    public ModelAndView post(@ModelAttribute("user") User user) {
+    public String post(@ModelAttribute("user") User user) {
         userRepository.save(user);
-        return new ModelAndView("users", "users", userRepository.findAll());
+        return "redirect:/users.html";
+    }
+
+    @RequestMapping(value = "/users/{id}.html", method = RequestMethod.DELETE)
+    public String delete(@ModelAttribute("user") User user) {
+        if(user.getId() != null) {
+            userRepository.delete(user.getId());
+        }
+        return "redirect:/users.html";
     }
 }
