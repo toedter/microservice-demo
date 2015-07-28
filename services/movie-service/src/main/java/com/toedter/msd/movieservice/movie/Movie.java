@@ -16,6 +16,7 @@ public class Movie {
     private String id;
     private String title;
     private long year;
-    private float rating;
+    private double rating;
+    private int rank;
     private String thumb;
 }

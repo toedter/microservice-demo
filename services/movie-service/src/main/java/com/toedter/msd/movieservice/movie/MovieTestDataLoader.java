@@ -14,7 +14,13 @@ public class MovieTestDataLoader {
     @Transactional
     public void loadData() {
         logger.info("init test movies");
-        Movie movie = new Movie("tt0111161", " The Shawshank Redemption", 1994, 9.3f, "srthumb.jpg");
-        movieRepository.save(movie);
+        ImdbReader imdbReader = new ImdbReader();
+        try {
+            imdbReader.readTop250(movieRepository);
+        } catch (Exception e) {
+            logger.error("Cannot read IMDB online, will use single test movie");
+            Movie movie = new Movie("tt0111161", " The Shawshank Redemption", 1994, 9.3f, 1, "srthumb.jpg");
+            movieRepository.save(movie);
+        }
     }
 }

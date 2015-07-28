@@ -3,6 +3,7 @@ package com.toedter.msd.movieservice.movie.ui;
 import com.toedter.msd.movieservice.movie.Movie;
 import com.toedter.msd.movieservice.movie.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,8 @@ public class MovieController {
 
     @RequestMapping(value = "/movies.html", method = RequestMethod.GET)
     public ModelAndView movieList(@ModelAttribute("movie") Movie movie) {
-        return new ModelAndView("movies", "movies", movieRepository.findAll());
+        Sort sort = new Sort(Sort.Direction.ASC, "rank");
+        return new ModelAndView("movies", "movies", movieRepository.findAll(sort));
     }
 
     @RequestMapping(value = "/movies.html", method = RequestMethod.POST)

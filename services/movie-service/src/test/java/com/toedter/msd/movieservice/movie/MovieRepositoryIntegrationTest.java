@@ -17,28 +17,28 @@ import static org.junit.Assert.assertThat;
 @Transactional
 public class MovieRepositoryIntegrationTest {
 
-	@Autowired
-	MovieRepository movieRepository;
+    @Autowired
+    MovieRepository movieRepository;
 
-	@Test
-	public void findsAllUsers() {
-		Iterable<Movie> users = movieRepository.findAll();
-		assertThat(users, is(not(emptyIterable())));
-	}
+    @Test
+    public void findsAllMovies() {
+        Iterable<Movie> users = movieRepository.findAll();
+        assertThat(users, is(not(emptyIterable())));
+    }
 
-	@Test
-	public void createsNewUser() {
-		Long before = movieRepository.count();
+    @Test
+    public void createsNewMovie() {
+        Long before = movieRepository.count();
 
-		Movie user = movieRepository.save(createUser());
+        Movie user = movieRepository.save(createMovie());
 
-		Iterable<Movie> result = movieRepository.findAll();
-		assertThat(result, is(Matchers.<Movie>iterableWithSize(before.intValue() + 1)));
-		assertThat(result, Matchers.hasItem(user));
-	}
+        Iterable<Movie> result = movieRepository.findAll();
+        assertThat(result, is(Matchers.<Movie>iterableWithSize(before.intValue() + 1)));
+        assertThat(result, Matchers.hasItem(user));
+    }
 
-	public static Movie createUser() {
-		Movie testUser = new Movie("sw", "Star Wars", 1978, 8.3f, "icon");
-		return testUser;
-	}
+    public static Movie createMovie() {
+        Movie testMovie = new Movie("sw", "Star Wars", 1978, 8.3f, 17, "icon");
+        return testMovie;
+    }
 }

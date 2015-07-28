@@ -34,9 +34,9 @@
             <td colspan="4">No movies</td>
         </tr>
         <tr th:each="movie : ${movies}">
-            <td style="text-align: left; width:10%"><img th:attr="src=@{'/thumbs/' + ${movie.thumb}}"/></td>
-            <td style="text-align: left; width:20%" th:text="${movie.id}">Id</td>
-            <td style="text-align: left; width:30%" th:text="${movie.title}">Title</td>
+            <td style="text-align: left; width:5%"><img th:attr="src=@{'/thumbs/' + ${movie.thumb}}"/></td>
+            <td style="text-align: left; width:5%" th:text="${movie.rank}">Rang</td>
+            <td style="text-align: left; width:50%" th:text="${movie.title}">Title</td>
             <td style="text-align: left; width:20%" th:text="${movie.year}">Year</td>
             <td style="text-align: left; width:20%" th:text="${movie.rating}">Rating</td>
         </tr>
