@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: users
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discoveryservice:8761/eureka/
+    registerWithEureka: true
+  instance:
+    preferIpAddress: true
+    metadataMap:
+      instanceId: ${spring.application.name}:${random.value}
+

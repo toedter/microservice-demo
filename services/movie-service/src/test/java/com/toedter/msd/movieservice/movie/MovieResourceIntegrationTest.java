@@ -1,6 +1,6 @@
-package com.toedter.msd.userservice.user;
+package com.toedter.msd.movieservice.movie;
 
-import com.toedter.msd.userservice.UserService;
+import com.toedter.msd.movieservice.MovieService;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +25,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = UserService.class)
+@SpringApplicationConfiguration(classes = MovieService.class)
 @WebAppConfiguration
 @IntegrationTest({"server.port=0"})
-public class UserResourceIntegrationTest {
+public class MovieResourceIntegrationTest {
 
     @Autowired
     protected WebApplicationContext context;
