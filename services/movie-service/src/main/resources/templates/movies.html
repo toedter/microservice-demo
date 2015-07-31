@@ -22,8 +22,8 @@
     <table class="table table-striped table-condensed">
         <thead>
         <tr>
-            <td>Thumb</td>
-            <td>Id</td>
+            <td></td>
+            <td></td>
             <td>Title</td>
             <td>Year</td>
             <td>Rating</td>
@@ -34,11 +34,11 @@
             <td colspan="4">No movies</td>
         </tr>
         <tr th:each="movie : ${movies}">
-            <td style="text-align: left; width:5%"><img th:attr="src=@{'/thumbs/' + ${movie.thumb}}"/></td>
-            <td style="text-align: left; width:5%" th:text="${movie.rank}">Rang</td>
-            <td style="text-align: left; width:50%" th:text="${movie.title}">Title</td>
-            <td style="text-align: left; width:20%" th:text="${movie.year}">Year</td>
-            <td style="text-align: left; width:20%" th:text="${movie.rating}">Rating</td>
+            <td style="text-align: left"><img th:attr="src=@{${movie.thumb}}" height="30" width="20"/></td>
+            <td style="text-align: right" th:text="${movie.rank}"></td>
+            <td style="text-align: left" th:text="${movie.title}">Title</td>
+            <td style="text-align: left" th:text="${movie.year}">Year</td>
+            <td style="text-align: right" th:text="${movie.rating}">Rating</td>
         </tr>
         </tbody>
     </table>
