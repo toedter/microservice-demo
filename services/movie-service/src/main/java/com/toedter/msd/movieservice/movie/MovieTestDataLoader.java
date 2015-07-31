@@ -16,7 +16,7 @@ public class MovieTestDataLoader {
         logger.info("init test movies");
         ImdbReader imdbReader = new ImdbReader();
         try {
-            imdbReader.readTop250(movieRepository);
+            imdbReader.readMoviesOnline(movieRepository);
         } catch (Exception e) {
             logger.error("Cannot read IMDB online, will use single test movie");
             Movie movie = new Movie("tt0111161", " The Shawshank Redemption", 1994, 9.3f, 1, "srthumb.jpg");
