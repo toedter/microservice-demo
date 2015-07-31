@@ -23,10 +23,10 @@
         <thead>
         <tr>
             <td></td>
-            <td></td>
+            <td style="text-align: right">Rank</td>
             <td>Title</td>
             <td>Year</td>
-            <td>Rating</td>
+            <td style="text-align: right">Rating</td>
         </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
             <td colspan="4">No movies</td>
         </tr>
         <tr th:each="movie : ${movies}">
-            <td style="text-align: left"><img th:attr="src=@{${movie.thumb}}" height="30" width="20"/></td>
+            <td style="text-align: left"><a th:attr="href=@{${movie.thumb}}"><img th:attr="src=@{${movie.thumb}}" height="30" width="20"/></a></td>
             <td style="text-align: right" th:text="${movie.rank}"></td>
             <td style="text-align: left" th:text="${movie.title}">Title</td>
             <td style="text-align: left" th:text="${movie.year}">Year</td>
