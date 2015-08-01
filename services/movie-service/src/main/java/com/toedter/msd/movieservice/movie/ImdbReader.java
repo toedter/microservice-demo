@@ -14,6 +14,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -24,25 +25,27 @@ import java.util.regex.Pattern;
 public class ImdbReader {
 
     private final Logger logger = LoggerFactory.getLogger(ImdbReader.class);
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public void initializeMovies(MovieRepository movieRepository) throws Exception {
         File movieDirs = new File(MovieService.movieDir + "/thumbs");
         movieDirs.mkdirs();
 
         String moviesJson;
-        long date;
+        String dateString;
         JsonNode rootNode = null;
         boolean releadMoviesOnline = false;
         boolean reloadMovieFile = true;
         ObjectMapper mapper = new ObjectMapper();
 
+
         try {
             moviesJson = readFile(MovieService.movieDir + "/movies.json", StandardCharsets.UTF_8);
             rootNode = mapper.readValue(moviesJson, JsonNode.class);
-            date = rootNode.get("date").asLong();
+            dateString = rootNode.get("date").asText();
 
             long oneDayInMillis = 1000 * 60 * 60 * 24;
-            Date lastLoadedMoviesDate = new Date(date);
+            Date lastLoadedMoviesDate = simpleDateFormat.parse(dateString);
 
             long timePassed = new Date().getTime() - lastLoadedMoviesDate.getTime();
             if (timePassed > oneDayInMillis) {
@@ -97,7 +100,7 @@ public class ImdbReader {
 
         PrintWriter movieWriter = new PrintWriter(MovieService.movieDir + "/movies.json", "UTF-8");
         movieWriter.println("{");
-        movieWriter.println("  \"date\": \"" + new Date().getTime() + "\",");
+        movieWriter.println("  \"date\": \"" + simpleDateFormat.format(new Date()) + "\",");
         movieWriter.println("  \"movies\": [");
 
         int movieCount = ids.size();
