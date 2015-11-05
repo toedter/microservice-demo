@@ -1,8 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+apply plugin: 'application'
+
+mainClassName = "com.toedter.msd.movieservice.MovieService"
 
 jar {
-	baseName = 'user-service'
+	baseName = 'movie-service'
 	version =  '0.0.1'
 }
 

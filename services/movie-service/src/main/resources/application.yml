@@ -1,6 +1,6 @@
 spring:
   application:
-    name: users
+    name: movies
 
 server:
   port: 8082

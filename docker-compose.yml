@@ -1,0 +1,26 @@
+discoveryservice:
+  build: ./services/discovery-service
+  ports:
+    - "8761:8761"
+
+userservice:
+  build: ./services/user-service
+  ports:
+    - "8081:8081"
+  links:
+    - discoveryservice
+
+movieservice:
+  build: ./services/movie-service
+  ports:
+    - "8082:8082"
+  links:
+    - discoveryservice
+
+zuulservice:
+  build: ./services/zuul-service
+  ports:
+    - "8080:8080"
+  links:
+    - discoveryservice
+

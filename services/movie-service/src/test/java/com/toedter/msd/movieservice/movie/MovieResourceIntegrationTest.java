@@ -45,21 +45,21 @@ public class MovieResourceIntegrationTest {
     }
 
     @Test
-    public void shouldGetUsersLink() throws Exception {
+    public void shouldGetMoviesLink() throws Exception {
         MockHttpServletResponse response2 = mvc.perform(get("/")).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(status().isOk()).
                 andExpect(content().contentType(MediaTypes.HAL_JSON)).
-                andExpect(jsonPath("_links.users.href", CoreMatchers.notNullValue())).
+                andExpect(jsonPath("_links.movies.href", CoreMatchers.notNullValue())).
                 andReturn().
                 getResponse();
 
         LinkDiscoverer discoverer = links.getLinkDiscovererFor(response2.getContentType());
-        Link link = discoverer.findLinkWithRel("users", response2.getContentAsString());
+        Link link = discoverer.findLinkWithRel("movies", response2.getContentAsString());
 
         mvc.perform(get(link.getHref())).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(content().contentTypeCompatibleWith(MediaTypes.HAL_JSON)).
-                andExpect(jsonPath("_embedded.users", CoreMatchers.notNullValue()));
+                andExpect(jsonPath("_embedded.movies", CoreMatchers.notNullValue()));
     }
 }
