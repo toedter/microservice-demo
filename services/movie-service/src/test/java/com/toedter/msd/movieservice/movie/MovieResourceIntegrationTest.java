@@ -57,7 +57,9 @@ public class MovieResourceIntegrationTest {
         LinkDiscoverer discoverer = links.getLinkDiscovererFor(response2.getContentType());
         Link link = discoverer.findLinkWithRel("movies", response2.getContentAsString());
 
-        mvc.perform(get(link.getHref())).
+        String moviesLinkWithoutTemplate = link.getHref().substring(0, link.getHref().indexOf("{"));
+
+        mvc.perform(get(moviesLinkWithoutTemplate)).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(content().contentTypeCompatibleWith(MediaTypes.HAL_JSON)).
                 andExpect(jsonPath("_embedded.movies", CoreMatchers.notNullValue()));
