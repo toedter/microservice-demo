@@ -14,12 +14,14 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
     compile "org.springframework.boot:spring-boot-starter-data-rest"
     compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.data:spring-data-rest-hal-browser"
+
     compile "org.projectlombok:lombok:1.14.8"
     compile "com.jayway.jsonpath:json-path"
 
     compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 
-    runtime 'org.hsqldb:hsqldb:2.3.2'
+    runtime 'org.hsqldb:hsqldb:2.3.3'
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
